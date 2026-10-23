@@ -1,8 +1,14 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace Company.ClassLibrary1;
+namespace Tienda Sergio;
 
-public class AppDbContext
+public class AppDbContext : DbContext
 {
+    public Dbset <Producto> Productos {get ; set;}
 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        var connectingSting = "Server=localhost;Database=Sergio;User=root;Password=tupassd;";
+        Mysql(connectionString, ServerVersion.AutoDetect(connectionString));
+    }
 }
